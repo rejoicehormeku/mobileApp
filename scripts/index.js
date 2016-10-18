@@ -17,43 +17,35 @@
 		
 		 	document.getElementById("watchlocation").onclick = function() {
 			navigator.geolocation.watchPosition(onSuccess, onError, {timeout: 30000});	
-					
-
-  }
+		}
  };
  
- function onSuccess(position){
-	var element = document.getElementById('geolocation');
-element.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />'+
-					'Longitude: ' + position.coords.longitude + '<br />'+
-					'hr />'       +element.innerHTML;
-  }
+	function onSuccess(position){
+			var element = document.getElementById('geolocation');
+			element.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />'+
+								'Longitude: ' + position.coords.longitude + '<br />'+
+								'hr />'       +element.innerHTML;
+		}
   
-  function onError(error){
-	  alert('code: ' + error.code + '\n' +
-			'message: '+ error.message + '\n');
-	  
-  }
+	function onError(error){
+			alert('code: ' + error.code + '\n' +
+				  'message: '+ error.message + '\n');
+		  
+	}
   
 	function onPhotoDataSuccess(imageData) {
-
 		var smallImage = document.getElementById('smallImage');
-
 		smallImage.style.display = 'block';
-
 		smallImage.src = "data:image/jpeg;base64," + imageData;
-
 	}
 
 	function onFail(message) {
-
 		alert('Failed because: ' + message);
-
 	}
 	
-	document.getElementById("barcode").onclick = function barcode(){
 	
-  cordova.plugins.barcodeScanner.scan(
+	document.getElementById("barcode").onclick = function barcode(){
+	cordova.plugins.barcodeScanner.scan(
       function (result) {
           alert("We got a barcode\n" +
                 "Result: " + result.text + "\n" +
@@ -72,5 +64,7 @@ element.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />'+
       }
    );
   }
+  
+  
 		
 })();
